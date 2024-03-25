@@ -20,7 +20,6 @@ Import PIL and open image
 from PIL import Image
 image = Image.open('image.jpg')
 ```
----
 
 Segment body with face
 - **img** input image of type PIL
