@@ -33,7 +33,7 @@ Segment body **without** face
 - **img** input image of type PIL
 - **face** Boolean, True by default
 ```python
-seg_img, seg_mask = segment_clothing(img=image, face=False)
+seg_img, seg_mask = segment_body(img=image, face=False)
 seg_img.save('segmented_img.png')
 seg_mask.save('segmented_mask.png')
 ```
