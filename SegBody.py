@@ -44,6 +44,7 @@ def remove_face(img, mask):
     return mask
 
 def segment_body(img, face=True):
+    img = img.copy()
     # Segment image
     segments = segmenter(img)
 
