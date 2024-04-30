@@ -1,5 +1,6 @@
 # Segment Body
-Segment body, with or without face.
+Segment body (with or without face)
+Segment torso
 
 Takes in a PIL image and outputs the segmented body and mask. Built on top of 🤗 Tranformers using the [mattmdjaga/segformer_b2_clothes](https://huggingface.co/mattmdjaga/segformer_b2_clothes) image segmentation model.
 
