@@ -75,3 +75,36 @@ def segment_body(original_img, face=True):
     img.putalpha(final_mask)
 
     return img, final_mask
+
+
+def segment_torso(original_img):
+    # Make a copy
+    img = original_img.copy()
+    
+    # Segment image
+    segments = segmenter(img)
+
+    # Create list of masks
+    segment_include = ["Upper-clothes", "Dress", "Belt", "Face", "Left-arm", "Right-arm"]
+    mask_list = []
+    for s in segments:
+        if(s['label'] in segment_include):
+            mask_list.append(s['mask'])
+
+
+    # Paste all masks on top of eachother 
+    final_mask = np.array(mask_list[0])
+    for mask in mask_list:
+        current_mask = np.array(mask)
+        final_mask = final_mask + current_mask
+            
+    # Convert final mask from np array to PIL image
+    final_mask = Image.fromarray(final_mask)
+
+    # Remove face
+    final_mask = remove_face(img.convert('RGB'), final_mask)
+
+    # Apply mask to original image
+    img.putalpha(final_mask)
+
+    return img, final_mask
